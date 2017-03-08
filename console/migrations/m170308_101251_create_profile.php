@@ -30,9 +30,15 @@ class m170308_101251_create_profile extends Migration
 
     public function down()
     {
-        echo "m170308_101251_create_profile cannot be reverted.\n";
+       // echo "m170308_101251_create_profile cannot be reverted.\n";
 
-        return false;
+        //return false;
+        //drop foreign key for user table
+        $this->dropForeignKey('fk-profile-user_id','profile');
+        //drop index for column user_id
+        $this->dropIndex('idx-profile-user_id','profile');
+        //drop table profile
+        $this->dropTable('profile');
     }
 
     /*

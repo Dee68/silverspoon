@@ -27,9 +27,15 @@ class m170308_140432_create_category extends Migration
 
     public function down()
     {
-        echo "m170308_140432_create_category cannot be reverted.\n";
+        //echo "m170308_140432_create_category cannot be reverted.\n";
 
-        return false;
+        //return false;
+        //drop foreign key for parentCategory table
+        $this->dropForeignKey('fk-category-parent_id','category');
+        //drop index for parent_id column
+        $this->dropIndex('idx-category-parent_id','category');
+        //drop category table
+        $this->dropTable('category');
     }
 
     /*
